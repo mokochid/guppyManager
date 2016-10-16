@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Aquaria </title>
+</head>
+<body>
+<h1>My Aquaria</h1>
+<div ng-repeat="aquarium in aquariums">
+  <span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false" ng-show="aquarium.aquariumFishesVisible"></span>
+  <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)" ng-hide="aquarium.aquariumFishesVisible"></span>
+  <span>Aquarium Nr: {{$index +1}} </span>
+  <span>Aquarium name: {{aquarium.name}}</span>
+  <span>Aquarium description: {{aquarium.description}}</span>
+<div class="aquarium data" ng-show="aquarium.aquariumFishesVisible">
+  <div class="edit-aquarium"><button>Edit aquarium</button></div>
+  <div class="remove-aquarium"><button>Remove aquarium</button></div>
+  <span>Fish list</span>
+  <div class="fish-list" ng-repeat="fish in aquarium.fishes">
+   <ul>
+     <li><span>{{$index +1}}. {{fish.firstName}} {{fish.lastName}}</span></li>
+   </ul>
+
+  </div>
+  <form><input type="text" name="fish-name"><input type="submit" value="Add new fish"></form>
+  <form><input type="text" name="aquarium-name"><input type="submit" value="Add new aquarium"></form>
+</div>
+</div>
+</body>
+</html>

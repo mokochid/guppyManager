@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+  {{user.login}}
+  {{user.mail}}
+  {{user.city}}
+  {{user.country}}
+</div>
+<div class="aquariums">
+  <h1>Aquariums</h1>
+  <button ng-click="add()">Add new</button>
+    <div ng-repeat="aquarium in aquariums">{{aquarium.name}}</div>
+</div>
+<div class="genes">
+
+</div>
+</body>
+</html>
