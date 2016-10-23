@@ -9,6 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -18,5 +19,12 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByLogin(@Param("login") String login);
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    User save(User var1);
+
+    @PreAuthorize("hasRole('USER')")
+    Collection<User> save(Collection<User> var1);
 //    @PostFilter("filterObject.getLogin() == authentication.name")
 }

@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('guppyMenagerApp').
-controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $rootScope){
+controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $rootScope, aquariumData){
   /*userData.getData($scope.user._links.aquariums.href).
   success(function (data) {
     $scope.aquariums = data._embedded.aquariums;
@@ -30,7 +30,23 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
     }).error(function (data) {
       alert("zle ryby");
     });
+  };
 
+   $scope.newAquariumData = {
+       "name": "dupa",
+       "description": "",
+       "user": $rootScope.user.data._links.self.href
+   }
+  $scope.addAquarium = function () {
+  console.log($scope);
+  aquariumData.createAquarium($scope.newAquariumData).
+  success(function (data) {
+    console.log(data);
+    alert("new aquarium added");
+  }).error(function (data) {
+      console.log(data);
+      alert("error adding an aquarium");
+  });
   };
 
 });
