@@ -22,21 +22,6 @@ angular
         controller: 'UserLoginCtrl',
         controllerAs: 'ul'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/apka', {
-        templateUrl: 'views/apka.html',
-        controller: 'AppController',
-        controllerAs: 'apka'
-      })
-      .when('/user', {
-        templateUrl: 'views/user.html',
-        controller: 'UserCtrl',
-        controllerAs: 'userc'
-      })
       .when('/aquariumlist', {
         templateUrl: 'views/aquariumList.html',
         controller: 'AquariumListCtrl',
@@ -51,10 +36,10 @@ angular
         templateUrl: 'views/fishList.html',
         controller: 'FishListCtrl',
         controllerAs: 'flc'
-      })
-      .otherwise({
-        redirectTo: '/userlogin'
       });
+//      .otherwise({
+//        redirectTo: '/'
+//      });
 //    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
   })
   .run(function ($http, $rootScope, userData, $location) {
@@ -64,9 +49,13 @@ angular
         console.log('DENY');
         console.log(event);
         if (routeObject.originalPath != '/userlogin') {
+           console.log('TEST1');
           event.preventDefault();
+         console.log('TEST2');
           $location.path('/userlogin');
+          console.log('TEST3');
         }
+//        $location.path('/userlogin');
       }
       else {
         console.log('ALLOW');
@@ -85,6 +74,7 @@ angular
         $http.get('user', {headers : headers}).then(function(response) {
                       if (response.data.name) {
                         $rootScope.user = {"login": login, "password": password};
+                        $http.defaults.headers.common["Authorization"] = "Basic " + btoa(login + ":" + password);
                         userData.findByLogin(login).success(function (data) {
                                 $rootScope.user = {"login": login, "password": password};
                                 $rootScope.user.data = data;
@@ -96,7 +86,7 @@ angular
                                 alert("Nie znaleziono użytkownika");
                               });
                       } else {
-                        alert("Nie znaleziono użytkownika");
+                        alert("Błędne dane logowania");
                       }
                     }, function() {
                       alert("Brak usera");

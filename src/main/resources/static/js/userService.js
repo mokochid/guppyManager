@@ -30,6 +30,9 @@ angular.module('guppyMenagerApp')
     },
     findByLogin: function (login) {
       return $http({method: 'GET', url: backendURL + "search/findByLogin", params: {login:login}});
+    },
+    addNewAquarium: function (url, data) {
+        return $http({method: 'POST', url: url, data: data});
     }
   };
 });

@@ -35,6 +35,7 @@ public class GuppyApplication {
 		return userRepository.findByLogin("daniel");
 	}*/
 	public Principal user(Principal user) {
+		System.out.println(user.getName());
 		return user;
 	}
 
@@ -60,13 +61,18 @@ public class GuppyApplication {
 			http
 					.httpBasic()
 					.and()
-					.authorizeRequests()
-					.antMatchers("/index.html", "/home.html", "/userLogin.html", "/main.html", "/").permitAll()
-					.anyRequest().authenticated().and()
-					.formLogin()
-					.loginPage("/userlogin")/*.and()
-					.csrf()
-						.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())*/;
+					.authorizeRequests().antMatchers("/api/**").authenticated()
+					.antMatchers("/user").authenticated();
+////					.httpBasic()
+////					.and()
+//					.authorizeRequests()
+//					.antMatchers("/index.html", "/home.html", "/views/userLogin.html", "/main.html", "/", "/userlogin", "/#/userlogin").permitAll()
+////					.antMatchers("/resources/**").permitAll()
+//					.anyRequest().authenticated().and()
+////					.formLogin()
+////					.loginPage("/").permitAll().and()
+//					.csrf()
+//						.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 		}
 	}
 }
