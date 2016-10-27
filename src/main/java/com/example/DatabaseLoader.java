@@ -22,10 +22,10 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        /*    User test = new User();
-            test.setLogin("daniel");
-            test.setPassword("daniel");
-            test.setRoles(new String []{"ADMIN", "USER"});
+         /*   User test = new User();
+            test.setLogin("testowy");
+            test.setPassword("testowy");
+            test.setRoles(new String []{"USER"});
             this.userRepository.save(test);*/
 
     }
