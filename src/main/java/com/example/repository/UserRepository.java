@@ -20,11 +20,11 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByLogin(@Param("login") String login);
 
-    @Override
-    @PreAuthorize("hasRole('ADMIN')")
-    User save(User var1);
-
-    @PreAuthorize("hasRole('USER')")
-    Collection<User> save(Collection<User> var1);
-//    @PostFilter("filterObject.getLogin() == authentication.name")
+//    @Override
+//    @PreAuthorize("hasRole('ADMIN')")
+//    User save(User var1);
+//
+//    @PreAuthorize("hasRole('USER')")
+//    Collection<User> save(Collection<User> var1);
+////    @PostFilter("filterObject.getLogin() == authentication.name")
 }

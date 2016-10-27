@@ -36,6 +36,11 @@ angular
         templateUrl: 'views/fishList.html',
         controller: 'FishListCtrl',
         controllerAs: 'flc'
+      })
+      .when('/adminpanel', {
+        templateUrl: 'views/adminPanel.html',
+        controller: 'AdminPanelCtrl',
+        controllerAs: 'apc'
       });
 //      .otherwise({
 //        redirectTo: '/'
@@ -44,6 +49,10 @@ angular
   })
   .run(function ($http, $rootScope, userData, $location) {
     $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+    $rootScope.isActive = function (viewLocation) {
+         var active = (viewLocation === $location.path());
+         return active;
+    };
     $rootScope.$on('$routeChangeStart', function (event, routeObject) {
       if (!$rootScope.user) {
         console.log('DENY');
@@ -88,6 +97,12 @@ angular
                       } else {
                         alert("Błędne dane logowania");
                       }
+                      response.data.authorities.forEach(function (authObject) {
+                        if(authObject.authority == "ADMIN")
+                        $rootScope.authenticatedadmin = true;
+                      })
+
+
                     }, function() {
                       alert("Brak usera");
                     });
