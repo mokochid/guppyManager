@@ -32,18 +32,18 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">guppyMenager</a>
+            <a class="navbar-brand" href="#/aquariumlist">guppyMenager</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
+            <div class="row">
             <ul class="nav navbar-nav">
-              <li ng-class="{active: isActive('/') }"><a href="#/">Home</a></li>
-              <li ng-class="{active: isActive('/aquariumlist') }"><a ng-href="#/aquariumlist">My aquaria</a></li>
-              <li ng-class="{active: isActive('/fishlist') }"><a ng-href="#/fishlist">My fish</a></li>
-              <li ng-class="{active: isActive('/userlogin') }"><a ng-href="#/userlogin" ng-click="userLogout()">logout</a></li>
-              <li ng-show="authenticatedadmin" ng-class="{active: isActive('/adminpanel') }"><a ng-href="#/adminpanel">Admin Panel</a></li>
+              <div class="col-xs-3"><li ng-class="{active: isActive('/aquariumlist') }"><a ng-href="#/aquariumlist">My aquaria</a></li></div>
+              <div class="col-xs-3"><li ng-class="{active: isActive('/fishlist') }"><a ng-href="#/fishlist">My fish</a></li></div>
+              <div class="col-xs-3"><li ng-class="{active: isActive('/userlogin') }"><a ng-href="#/userlogin" ng-click="userLogout()">logout</a></li></div>
+              <div class="col-xs-3"><li ng-show="authenticatedadmin" ng-class="{active: isActive('/adminpanel') }"><a ng-href="#/adminpanel">Admin Panel</a></li></div>
             </ul>
+            </div>
           </div>
         </div>
       </div>
