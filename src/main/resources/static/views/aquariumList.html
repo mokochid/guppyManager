@@ -6,25 +6,37 @@
 </head>
 <body>
 <h1>My Aquaria</h1>
-<div ng-repeat="aquarium in aquariums">
-  <span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false" ng-show="aquarium.aquariumFishesVisible"></span>
-  <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)" ng-hide="aquarium.aquariumFishesVisible"></span>
-  <span>Aquarium Nr: {{$index +1}} </span>
-  <span>Aquarium name: {{aquarium.name}}</span>
-  <span>Aquarium description: {{aquarium.description}}</span>
-<div class="aquarium data" ng-show="aquarium.aquariumFishesVisible">
-  <div class="edit-aquarium"><button>Edit aquarium</button></div>
-  <div class="remove-aquarium"><button>Remove aquarium</button></div>
-  <span>Fish list</span>
-  <div class="fish-list" ng-repeat="fish in aquarium.fishes">
-   <ul>
-     <li><span>{{$index +1}}. {{fish.firstName}} {{fish.lastName}}</span></li>
-   </ul>
+<div ng-repeat="aquarium in aquariums" class="container">
+        <span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false"
+              ng-show="aquarium.aquariumFishesVisible"></span>
+        <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)"
+              ng-hide="aquarium.aquariumFishesVisible"></span>
+    <div class="row">
+        <span class="col-xs-2">Aquarium Nr: {{$index +1}} </span>
+        <span class="col-xs-4">Aquarium name: {{aquarium.name}}</span>
+        <span class="col-xs-6">Aquarium description: {{aquarium.description}}</span><br /><br />
+    </div>
+    <div class="aquarium data" ng-show="aquarium.aquariumFishesVisible">
+        <div class="edit-aquarium">
+            <button>Edit aquarium</button>
+        </div>
+        <div class="remove-aquarium">
+            <button>Remove aquarium</button>
+        </div>
+        <span>Fish list</span>
+        <div class="fish-list" ng-repeat="fish in aquarium.fishes">
+            <ul>
+                <li><span>{{$index +1}}. {{fish.firstName}} {{fish.lastName}}</span></li>
+            </ul>
 
-  </div>
-  <form><input type="text" name="fish-name"><input type="submit" value="Add new fish"></form>
-  <input type="text" ng-model="newAquariumData.name"><button ng-click="addAquarium()">Add new aquarium</button>
+        </div>
+        <form><input type="text" name="fish-name"><input type="submit" value="Add new fish"></form>
+        <input type="text" ng-model="newAquariumData.name">
+        <button ng-click="addAquarium()">Add new aquarium</button>
+        <br />
+        <br />
+    </div>
 </div>
-</div>
+<hr>
 </body>
 </html>
