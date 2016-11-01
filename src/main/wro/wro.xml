@@ -6,7 +6,6 @@
         <css>/css/css/bootstrap.min.css</css>
         <css>/css/css/bootstrap-theme.css</css>
         <css>/css/css/bootstrap-theme.min.css</css>
-        <js>/asset/jquery.js</js>
         <js>/asset/angular.js</js>
         <js>/asset/angular-animate.js</js>
         <js>/asset/angular-cookies.js</js>
@@ -14,6 +13,9 @@
         <js>/asset/angular-route.js</js>
         <js>/asset/angular-sanitize.js</js>
         <js>/asset/angular-touch.js</js>
+        <js>/asset/jquery.js</js>
+        <js>/asset/tether.js</js>
+        <js>/asset/bootstrap.js</js>
         <!--<js>webjar:angularjs/1.3.8/angular-route.min.js</js>-->
     </group>
 </groups>
