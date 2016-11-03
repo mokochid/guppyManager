@@ -7,10 +7,10 @@
 <body>
 <h1>My Aquaria</h1>
 <div ng-repeat="aquarium in aquariums" class="container">
-        <span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false"
+        <!--<span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false"
               ng-show="aquarium.aquariumFishesVisible"></span>
         <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)"
-              ng-hide="aquarium.aquariumFishesVisible"></span>
+              ng-hide="aquarium.aquariumFishesVisible"></span>-->
     <table class="table table-bordered table-responsive">
         <thead>
         <tr>
@@ -21,13 +21,13 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{$index +1}}</td>
+            <td><button data-toggle="collapse" class="btn btn-default" data-target="#aquadetails">Aquarium {{$index +1}} </button></td>
             <td>{{aquarium.name}}</td>
             <td>{{aquarium.description}}</td>
         </tr>
         </tbody>
     </table>
-    <div class="aquarium data" ng-show="aquarium.aquariumFishesVisible">
+    <div id= "aquadetails" class="collapse"><!--ng-show="aquarium.aquariumFishesVisible"-->
         <div class="edit-aquarium">
             <button>Edit aquarium</button>
         </div>

@@ -5,11 +5,18 @@
     <title>User login</title>
 </head>
 <body>
-<h1>login page</h1>
-<form>
-  login: <input type="text" name="loginInput" ng-model="login"><br>
-  password: <input type="password" name="passwordInput" ng-model="password"><br>
-  <input type="submit" value="Submit" ng-click="loginOnClick()">
+<h1>Login page</h1>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="login">Username:</label>
+        <input type="text" class="form-control" id="login" name="loginInput" ng-model="login">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" name="passwordInput" ng-model="password">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="loginOnClick()">Submit</button>
 </form>
+
 </body>
 </html>
