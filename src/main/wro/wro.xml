@@ -2,6 +2,7 @@
     <group name="angular-bootstrap">
         <!--<css>webjar:bootstrap/3.2.0/less/bootstrap.less</css>-->
         <!--<css>file:${project.basedir}/src/main/wro/main.less</css>-->
+        <css>/css/css/main.css</css>
         <css>/css/css/bootstrap.css</css>
         <css>/css/css/bootstrap.min.css</css>
         <css>/css/css/bootstrap-theme.css</css>
