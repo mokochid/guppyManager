@@ -6,11 +6,22 @@
 </head>
 <body>
 <h1>My Aquaria</h1>
+<hr>
+<!--<form><input type="text" name="fish-name"><input type="submit" value="Add new fish"></form>-->
+<form>
+    <fieldset>
+        <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+        <input type="text" ng-model="newAquariumData.name" placeholder="Aquarium name">
+        <button class="btn btn-success" ng-click="addAquarium()">Add new aquarium</button>
+    </fieldset>
+</form>
+<br/>
+<br/>
 <div ng-repeat="aquarium in aquariums" class="container">
-        <!--<span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false"
-              ng-show="aquarium.aquariumFishesVisible"></span>
-        <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)"
-              ng-hide="aquarium.aquariumFishesVisible"></span>-->
+    <!--<span class="glyphicon glyphicon-chevron-up" ng-click="aquarium.aquariumFishesVisible=false"
+          ng-show="aquarium.aquariumFishesVisible"></span>
+    <span class="glyphicon glyphicon-chevron-down" ng-click="getFishes(aquarium)"
+          ng-hide="aquarium.aquariumFishesVisible"></span>-->
     <table class="table table-bordered table-responsive">
         <thead>
         <tr>
@@ -21,13 +32,17 @@
         </thead>
         <tbody>
         <tr>
-            <td><button data-toggle="collapse" class="btn btn-default" data-target="#aquadetails{{$index}}">Aquarium {{$index +1}} </button></td>
+            <td>
+                <button data-toggle="collapse" class="btn btn-default" data-target="#aquadetails{{$index}}">Aquarium
+                    {{$index +1}}
+                </button>
+            </td>
             <td>{{aquarium.name}}</td>
             <td>{{aquarium.description}}</td>
         </tr>
         </tbody>
     </table>
-    <div id= "aquadetails{{$index}}" class="collapse"><!--ng-show="aquarium.aquariumFishesVisible"-->
+    <div id="aquadetails{{$index}}" class="collapse"><!--ng-show="aquarium.aquariumFishesVisible"-->
         <div class="edit-aquarium">
             <button>Edit aquarium</button>
         </div>
@@ -41,13 +56,8 @@
             </ul>
 
         </div>
-        <form><input type="text" name="fish-name"><input type="submit" value="Add new fish"></form>
-        <input type="text" ng-model="newAquariumData.name">
-        <button ng-click="addAquarium()">Add new aquarium</button>
-        <br/>
-        <br/>
     </div>
 </div>
-<hr>
+
 </body>
 </html>

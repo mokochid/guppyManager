@@ -33,7 +33,7 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
   };
 
    $scope.newAquariumData = {
-       "name": "dupa",
+       "name": "",
        "description": "",
        "user": $rootScope.user.data._links.self.href
    }
@@ -49,4 +49,4 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
   });
   };
 
-});
+})
