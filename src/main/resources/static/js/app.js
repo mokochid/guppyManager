@@ -90,7 +90,7 @@ angular
                                 //$http.defaults.withCredentials = true;
                                 //$http.defaults.headers.common["Authorization"] = "Basic " + btoa(login + ":" + password);
                                 $location.path('/aquariumlist');
-                                alert("findbylogin success");
+                                //todo:daniel ladna obsluga bledow nie przez alerty tylko przez angularowe monity alert("findbylogin success");
                               }).error(function () {
                                 alert("Nie znaleziono użytkownika");
                               });
