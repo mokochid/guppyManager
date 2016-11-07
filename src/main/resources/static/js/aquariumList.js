@@ -39,6 +39,7 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
   }).error(function (data) {
         alert("error adding an aquarium");
   });
+  getAquariumList();
   };
 
   $scope.editAquarium = function (aquarium) {
