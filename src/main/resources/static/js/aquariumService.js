@@ -13,14 +13,14 @@ angular.module('guppyMenagerApp')
       getAquariumData: function (aquariumUrl) {
         return $http({method: 'GET', url: aquariumUrl});
       },
-      updateAquarium: function (aquarium_id, aquariumData) {
-        return $http({method: 'PUT', url: backendURL + 'aquarium_id', data: {aquariumData: aquariumData}, params: {aquarium_id: aquarium_id} });
+      updateAquarium: function (aquarium) {
+        return $http({method: 'PUT', url: aquarium._links.self.href, data: aquarium});
       },
       createAquarium: function (data) {
         return $http({method: 'POST', url: backendURL, data: data});
       },
-      deleteAquarium: function (aquarium_id) {
-        return $http({method: 'GET', url: backendURL + 'aquarium_id', params: {aquarium_id: aquarium_id}});
+      deleteAquarium: function (aquarium) {
+        return $http({method: 'DELETE', url: aquarium._links.self.href});
       },
       getAquariums: function () {
         return $http({method: 'GET', url: backendURL});

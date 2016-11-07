@@ -19,7 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 //@PreAuthorize("hasRole('USER')")
 
 @RepositoryRestResource(collectionResourceRel = "aquariums", path = "aquariums")
-public interface AquariumRepository extends CrudRepository<Aquarium, Long> {
+public interface AquariumRepository extends PagingAndSortingRepository<Aquarium, Long> {
     @PostFilter("filterObject.getUser()!=null && filterObject.getUser().getLogin() == authentication.name")
 //    @PostFilter("filterObject.getId() == 8")
     @Override
