@@ -8,7 +8,7 @@ controller('UserLoginCtrl', function UserLoginCtrl($scope, $rootScope){
     if($scope.login && $scope.password) {
       $rootScope.userLogin($scope.login, $scope.password);
     }else {
-      alert("podaj login i haslo")
+      toastr.warning('Login and password needed to login successfully')
     }
     /*console.log($rootScope.user);
     console.log($scope.login);

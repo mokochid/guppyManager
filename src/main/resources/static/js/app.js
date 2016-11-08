@@ -48,6 +48,15 @@ angular
 //    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
   })
   .run(function ($http, $rootScope, userData, $location) {
+  toastr.options = {
+    "debug": false,
+    "positionClass": "toast-bottom-full-width",
+    "onclick": null,
+    "fadeIn": 300,
+    "fadeOut": 1000,
+    "timeOut": 5000,
+    "extendedTimeOut": 1000
+  };
     $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     $rootScope.isActive = function (viewLocation) {
          var active = (viewLocation === $location.path());
@@ -90,9 +99,10 @@ angular
                                 //$http.defaults.withCredentials = true;
                                 //$http.defaults.headers.common["Authorization"] = "Basic " + btoa(login + ":" + password);
                                 $location.path('/aquariumlist');
+                                toastr.success('Login success')
                                 //todo:daniel ladna obsluga bledow nie przez alerty tylko przez angularowe monity alert("findbylogin success");
                               }).error(function () {
-                                alert("Nie znaleziono użytkownika");
+                                toastr.error("Nie znaleziono użytkownika");
                               });
                       } else {
                         alert("Błędne dane logowania");

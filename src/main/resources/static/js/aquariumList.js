@@ -4,12 +4,22 @@
 'use strict';
 angular.module('guppyMenagerApp').
 controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $rootScope, aquariumData){
+toastr.options = {
+  "debug": false,
+  "positionClass": "toast-bottom-full-width",
+  "onclick": null,
+  "fadeIn": 300,
+  "fadeOut": 1000,
+  "timeOut": 5000,
+  "extendedTimeOut": 1000
+};
+
   var getAquariumList = function () {
       userData.getDataByURL($rootScope.user.data._links.aquariums.href).
         success(function (data) {
           $scope.aquariums = data._embedded.aquariums;
       }).error(function (data, cos2) {
-        alert("zle dane");
+        toastr.warning("zle dane");
       });
   };
   getAquariumList();
@@ -21,7 +31,7 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
       aquarium.aquariumFishesVisible = true;
       console.log(aquarium.fishes);
     }).error(function (data) {
-      alert("zle ryby");
+      toastr.error('Bad fishes');
     });
   };
 
@@ -34,10 +44,10 @@ controller('AquariumListCtrl', function AquariumListCtrl($scope, userData, $root
   $scope.addAquarium = function () {
     aquariumData.createAquarium($scope.newAquariumData).
       success(function (data) {
-        alert("new aquarium added");
+        toastr.success("new aquarium added");
         getAquariumList();
   }).error(function (data) {
-        alert("error adding an aquarium");
+        toastr.error("error adding an aquarium");
   });
   getAquariumList();
   };
