@@ -7,27 +7,39 @@
 <body>
 <h1>My fish</h1>
 <div class="fish-container">
-  <span>being kept in aquarium </span><span class="aquarium-name">aquarium name</span>
-  <div class="males">
-    <h2>Males</h2>
-      <span>1. Nazwa samca</span>
-        <span>Genes:</span>
-        <div class="geny">
-          Y-linked:
-          X-linked:
-          Autosomal:
+    <span>Choose an aquarium</span><span class="aquarium-name">
+      <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="aquarium in aquariums"><a href="#fishlist" ng-click="getFishes(aquarium)">{{aquarium.name}}</a></li>
+          </ul>
+      </div>
+    </span>
+    <div id="fishlist" ng-show="aquarium">
+        <span>Fish list for {{aquarium.name}}</span>
+        <div class="fish-list" ng-repeat="fish in aquarium.fishes">
+            <ul>
+                <li><span>{{$index +1}}. {{fish.firstName}} {{fish.lastName}}</span></li>
+            </ul>
         </div>
-  </div>
-  <div class="females">
-    <h2>Females</h2>
-    <span>1. Nazwa samicy</span>
-    <span>Genes:</span>
-    <div class="geny">
-      X-linked:
-      X-linked:
-      Autosomal:
+        <form class="form-horizontal col-lg-5">
+            <fieldset>
+                <div class="form-group">
+                    <input type="text" ng-model="newFishData.firstName" class="form-control"
+                           placeholder="First name">
+                </div>
+                <div class="form-group">
+                <textarea ng-model="newFishData.lastName" class="form-control"
+                          placeholder="Last name"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" ng-click="addFish(aquarium)">Add new fish</button>
+                </div>
+            </fieldset>
+        </form>
     </div>
-  </div>
 
 </div>
 </body>
