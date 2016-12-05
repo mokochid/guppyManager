@@ -32,6 +32,19 @@ public class Gene {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
+    public enum GenType {
+        Xlinked, Ylinked, Autosomal
+    }
+    private GenType geneTypes;
+
+    public GenType getGeneTypes() {
+        return geneTypes;
+    }
+
+    public void setGeneTypes(GenType geneTypes) {
+        geneTypes = geneTypes;
+    }
+
     public List<Fish> getFishes() {return fishes;}
     public void setFishes(List<Fish> fishes) {this.fishes.addAll(fishes);}
 }
