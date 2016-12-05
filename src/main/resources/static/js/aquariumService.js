@@ -11,6 +11,7 @@ angular.module('guppyMenagerApp')
     var backendURL = 'http://localhost:8080/api/';
     var aquariumURL = backendURL + 'aquariums/';
     var fishURL = backendURL + 'fishes/';
+    var geneURL = backendURL + 'genes/';
     return {
       getAquariumData: function (aquariumUrl) {
         return $http({method: 'GET', url: aquariumUrl});
@@ -29,6 +30,9 @@ angular.module('guppyMenagerApp')
       },
       createFishInAquarium: function (data) {
         return $http({method: 'POST', url: fishURL, data: data});
+      },
+      createGeneForFish: function (data) {
+        return $http({method: 'POST', url: geneURL, data: data});
       }
     };
   });

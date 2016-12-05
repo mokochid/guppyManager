@@ -10,14 +10,14 @@ angular.module('guppyMenagerApp')
     getData: function (dataUrl) {
       return $http({method: 'GET', url: dataUrl});
     },
-    updateUser: function (user_id, userData) {
-      return $http({method: 'PUT', url: backendURL + 'user_id', data: {userData: userData}, params: {user_id: user_id} });
+    updateUser: function (user) {
+      return $http({method: 'PUT', url: user._links.self.href, data: user});
     },
     createUser: function (userData) {
-      return $http({method: 'POST', url: backendURL, data: {userData: userData} });
+      return $http({method: 'POST', url: backendURL, data: userData});
     },
-    deleteUser: function (user_id) {
-      return $http({method: 'GET', url: backendURL + 'user_id', params: {user_id: user_id}});
+    deleteUser: function (user) {
+      return $http({method: 'DELETE', url: user._links.self.href});
     },
     getUsers: function () {
       return $http({method: 'GET', url: backendURL});

@@ -107,6 +107,7 @@ angular
                       } else {
                         alert("Błędne dane logowania");
                       }
+                      $rootScope.authenticatedadmin = false;
                       response.data.authorities.forEach(function (authObject) {
                         if(authObject.authority == "ADMIN")
                         $rootScope.authenticatedadmin = true;

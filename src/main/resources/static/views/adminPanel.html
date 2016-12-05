@@ -6,13 +6,179 @@
 </head>
 <body>
 <div>
-    <span>Add user</span>
+    <form class="form-horizontal col-lg-7">
+        <fieldset>
+            <div class="form-group">
+                <button class="btn btn-success" href="#userlist" ng-click="getUsers()">Menage users</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="userlist" ng-show="boolUserList">
+        <div>
+            <h1>Adding a user</h1>
+            <form class="form-horizontal col-lg-5">
+                <fieldset>
+                    <div class="form-group">
+                        <input type="text" ng-model="newUserData.login" class="form-control"
+                               placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="newUserData.password" class="form-control"
+                               placeholder="password">
+                    </div>
+                    <div class="form-group">
+                <textarea ng-model="newUserData.role" class="form-control"
+                          placeholder="User role: ADMIN || USER"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="addUser()">Add new user</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Nr</th>
+                <th>User Name</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td width="50">{{$index +1}}</td>
+                <td>{{user.login}}</td>
+                <td>{{user.roles}}</td>
+                <td width="150">
+                    <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ng-click="editUser(user)"><span
+                            class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ng-click="removeUser(user)">
+                        <span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-success btn-xs" data-title="Details" data-toggle="modal" data-target="#details">
+                        <span class="glyphicon glyphicon-info-sign"></span></button>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+           <!-- <ul>
+                <li><span>{{$index +1}}. Login: {{user.login}}, role: {{user.roles}}    </span><span class="glyphicon glyphicon-trash" ng-click="deleteUser(user)"></span></li>
+            </ul>-->
+        </div>
+    </div>
+    <div id="edit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit user</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <input type="text" ng-model="userEdit.login" class="form-control"
+                                       ng-attr-placeholder="{{userEdit.login}}">
+                            </div>
+                            <div class="form-group">
+                <textarea ng-model="userEdit.role" class="form-control"
+                          placeholder="roles"></textarea>
+                            </div>
+                            <div class="form-group">
+                <textarea ng-model="userEdit.password" class="form-control"
+                          placeholder="Description"></textarea>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button class="btn btn-warning" ng-click="updateUser()" data-dismiss="modal">Update</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<div id="delete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete user</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset>
+                        <p>Warning! You are going to permanently remove this user</p>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button class="btn btn-danger" ng-click="deleteUser()" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div>
-    <span>Delete user</span>
+    <form>
+        <fieldset>
+            <div class="form-group">
+                <button class="btn btn-success" href="#genelist" ng-click="getGenes()">Manage genes</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="genelist" ng-show="boolGeneManager">
+        <div>
+            <h1>Adding a gene</h1>
+            <form class="form-horizontal col-lg-5">
+                <fieldset>
+                    <div class="form-group">
+                        <input type="text" ng-model="newGeneData.name" class="form-control"
+                               placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" ng-model="newGeneData.description" class="form-control"
+                               placeholder="description">
+                    </div>
+                    <div class="form-group">
+                <textarea ng-model="newGeneTypes.role" class="form-control"
+                          placeholder="User role: ADMIN || USER"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="addUser()">Add new user</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    <form>
+        <div class="form-group">
+            <label for="typeGene">Select gene (select one):</label>
+            <select class="form-control" id="typeGene">
+                <option>Y-linked</option>
+                <option>X-linked</option>
+                <option>Autosomal</option>
+            </select>
+            <br>
+            <label for="geneList">Gene list:</label>
+            <select multiple class="form-control" id="geneList">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </form>
+    </div>
 </div>
-<div>
-    <span>Edit user</span>
 </div>
 </body>
 </html>
