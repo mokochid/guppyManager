@@ -33,6 +33,12 @@ angular.module('guppyMenagerApp')
       },
       createGeneForFish: function (data) {
         return $http({method: 'POST', url: geneURL, data: data});
-      }
+      },
+      getGenes: function () {
+              return $http({method: 'GET', url: geneURL});
+            },
+      deleteGene: function (gene) {
+            return $http({method: 'DELETE', url: gene._links.self.href});
+          }
     };
   });

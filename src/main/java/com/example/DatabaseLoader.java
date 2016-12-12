@@ -1,6 +1,9 @@
 package com.example;
 
+import com.example.domain.GenType;
+import com.example.domain.Gene;
 import com.example.domain.User;
+import com.example.repository.GeneRepository;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,11 +16,13 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner {
 
     private final UserRepository userRepository;
+    private final GeneRepository geneRepository;
 
     @Autowired
-    public DatabaseLoader(UserRepository userRepository) {
+    public DatabaseLoader(UserRepository userRepository, GeneRepository geneRepository) {
 
         this.userRepository = userRepository;
+        this.geneRepository = geneRepository;
     }
 
     @Override
@@ -27,6 +32,10 @@ public class DatabaseLoader implements CommandLineRunner {
             test.setPassword("testowy");
             test.setRoles(new String []{"USER"});
             this.userRepository.save(test);*/
-
+//        Gene gene = new Gene();
+//        gene.setName("testowy");
+//        gene.setDescription("testowyGen");
+//        gene.setGeneTypes(GenType.Autosomal);
+//        this.geneRepository.save(gene);
     }
 }
