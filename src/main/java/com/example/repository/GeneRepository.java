@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.domain.GenType;
 import com.example.domain.Gene;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,7 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @RepositoryRestResource(collectionResourceRel = "genes", path = "genes")
 public interface GeneRepository extends CrudRepository<Gene, Long> {
     @PreAuthorize("hasAuthority('ROLE_USER')")
-    Gene findByGeneTypes(@Param("GeneTypes") Gene.GenType type);
+    Gene findByGeneTypes(@Param("GeneTypes") GenType type);
 
     @PreAuthorize("hasAuthority('ROLE_USER')")
     @Override

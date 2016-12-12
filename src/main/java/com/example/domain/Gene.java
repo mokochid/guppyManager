@@ -1,12 +1,6 @@
 package com.example.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,9 +26,7 @@ public class Gene {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public enum GenType {
-        Xlinked, Ylinked, Autosomal
-    }
+    @Enumerated(EnumType.ORDINAL)
     private GenType geneTypes;
 
     public GenType getGeneTypes() {
@@ -42,7 +34,7 @@ public class Gene {
     }
 
     public void setGeneTypes(GenType geneTypes) {
-        geneTypes = geneTypes;
+        this.geneTypes = geneTypes;
     }
 
     public List<Fish> getFishes() {return fishes;}

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('guppyMenagerApp').
-controller('AdminPanelCtrl', function AdminPanelCtrl($scope, userData, $rootScope){
+controller('AdminPanelCtrl', function AdminPanelCtrl($scope, userData, $rootScope, aquariumData){
 toastr.options = {
   "debug": false,
   "positionClass": "toast-bottom-full-width",
@@ -15,6 +15,7 @@ $scope.newUserData = {
     "password": "",
     "roles": []
     };
+
 $scope.addUser = function () {
       $scope.newUserData.roles.push($scope.newUserData.role);
       userData.createUser($scope.newUserData).
@@ -66,19 +67,43 @@ $scope.newGeneData = {
     "description": "",
     "geneTypes": ""
     };
-$scope.getGenes = function () {
-    $scope.boolGeneManager = true;
-};
+
 $scope.addGene = function () {
       aquariumData.createGeneForFish($scope.newGeneData).
         success(function (data) {
+          console.log(data);
           toastr.success("new gene added");
           $scope.newGeneData.name = "";
           $scope.newGeneData.description = "";
           $scope.newGeneData.geneTypes = "";
+          $scope.getGenes();
     }).error(function (data) {
           toastr.error("error adding a gene");
     });
 };
+
+$scope.getGenes = function () {
+    $scope.boolGeneManager = true;
+    aquariumData.getGenes().
+            success(function (data) {
+              console.log(data);
+              $scope.genes = data._embedded.genes;
+          }).error(function (data, cos2) {
+            toastr.warning("zle geny");
+          });
+};
+$scope.getGenes();
+
+  $scope.removeGene = function (gene) {
+        $scope.geneDelete = gene;
+      };
+
+  $scope.deleteGene = function () {
+    aquariumData.deleteGene($scope.geneDelete).
+    success(function(data) {
+        $scope.getGenes();
+    });
+  };
+
 
 });
