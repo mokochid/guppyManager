@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <form class="form-horizontal col-lg-7">
+    <form class="form-horizontal col-lg-4">
         <fieldset>
             <div class="form-group">
                 <button class="btn btn-success" href="#userlist" ng-click="getUsers()">Menage users</button>
@@ -16,7 +16,7 @@
     <div id="userlist" ng-show="boolUserList">
         <div>
             <h1>Adding a user</h1>
-            <form class="form-horizontal col-lg-5">
+            <form class="form-horizontal col-lg-4">
                 <fieldset>
                     <div class="form-group">
                         <input type="text" ng-model="newUserData.login" class="form-control"
@@ -141,7 +141,7 @@
     <div id="genelist" ng-show="boolGeneManager">
         <div>
             <h1>Adding a gene</h1>
-            <form class="form-horizontal col-lg-5">
+            <form class="form-horizontal col-lg-4">
                 <fieldset>
                     <div class="form-group">
                         <input type="text" ng-model="newGeneData.name" class="form-control"
@@ -185,7 +185,7 @@
                 <td>{{gene.geneTypes}}</td>
                 <td width="150">
                     <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editGene"
-                            ng-click="editUser(user)"><span
+                            ng-click="editGene(gene)"><span
                             class="glyphicon glyphicon-pencil"></span></button>
                     <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#deleteGene"
                             ng-click="removeGene(gene)">
@@ -219,6 +219,45 @@
             <div class="modal-footer">
                 <div class="form-group">
                     <button class="btn btn-danger" ng-click="deleteGene()" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="editGene" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete gene</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <input type="text" ng-model="geneEdit.name" class="form-control"
+                                   placeholder="gene name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" ng-model="geneEdit.description" class="form-control"
+                                   placeholder="gene description">
+                        </div>
+                        <div class="form-group">
+                            <label for="typeGene">Select gene (select one):</label>
+                            <select name="repeatSelect" class="form-control" id="typeofGene" ng-model="geneEdit.geneTypes">
+                                <option value="Ylinked">Y-linked</option>
+                                <option value="Xlinked">X-linked</option>
+                                <option value="Autosomal">Autosomal</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button class="btn btn-danger" ng-click="updateGene()" data-dismiss="modal">Update</button>
                 </div>
             </div>
         </div>
