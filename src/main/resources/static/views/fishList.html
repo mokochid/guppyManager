@@ -19,10 +19,38 @@
     </span>
     <div id="fishlist" ng-show="aquarium">
         <span>Fish list for {{aquarium.name}}</span>
-        <div class="fish-list" ng-repeat="fish in aquarium.fishes">
-            <ul>
-                <li><span>{{$index +1}}. {{fish.firstName}} {{fish.lastName}}</span></li>
-            </ul>
+        <div class="fish-list">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Fish Name</th>
+                    <th>Fish Description</th>
+                    <th>Genes Names</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="fish in aquarium.fishes">
+                    <td width="50">{{$index +1}}</td>
+                    <td>{{fish.firstName}}</td>
+                    <td>{{fish.lastName}}</td>
+                    <td>{{fish.genes}}</td>
+                    <td width="150">
+                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editGene"
+                                ng-click="editGene(gene)"><span
+                                class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#deleteGene"
+                                ng-click="removeGene(gene)">
+                            <span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn btn-success btn-xs" data-title="Details" data-toggle="modal"
+                                data-target="#details">
+                            <span class="glyphicon glyphicon-info-sign"></span></button>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
         </div>
         <form class="form-horizontal col-lg-5">
             <fieldset>

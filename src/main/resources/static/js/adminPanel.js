@@ -69,6 +69,7 @@ $scope.newGeneData = {
     };
 
 $scope.addGene = function () {
+        $scope.getGenes();
       aquariumData.createGeneForFish($scope.newGeneData).
         success(function (data) {
           console.log(data);
@@ -92,7 +93,7 @@ $scope.getGenes = function () {
             toastr.warning("zle geny");
           });
 };
-$scope.getGenes();
+//$scope.getGenes();
 
   $scope.removeGene = function (gene) {
         $scope.geneDelete = gene;
@@ -104,6 +105,19 @@ $scope.getGenes();
         $scope.getGenes();
     });
   };
+
+  $scope.editGene = function (gene) {
+      $scope.geneEdit = angular.copy(gene);
+    };
+     $scope.updateGene = function () {
+
+        console.log($scope.geneEdit);
+        aquariumData.updateGene($scope.geneEdit).
+        success(function(data){
+          $scope.getGenes();
+          console.log(data);
+        });
+      };
 
 
 });

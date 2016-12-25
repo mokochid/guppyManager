@@ -25,6 +25,7 @@ toastr.options = {
     success(function (data) {
       console.log(data);
       aquarium.fishes = data._embedded.fishes;
+      aquarium.fishes.genes = data._embedded.fishes.genes.href;
       $scope.aquarium = aquarium;
       console.log(aquarium.fishes);
     }).error(function (data) {
@@ -44,6 +45,7 @@ toastr.options = {
       $scope.newFishData.fishTank = aquarium._links.self.href;
       aquariumData.createFishInAquarium($scope.newFishData).
         success(function (data) {
+          $scope.getFishList();
           toastr.success("new fish added");
           getFishList(aquarium);
           $scope.newFishData.firstName = "";
