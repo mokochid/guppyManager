@@ -35,13 +35,13 @@
                     <td width="50">{{$index +1}}</td>
                     <td>{{fish.firstName}}</td>
                     <td>{{fish.lastName}}</td>
-                    <td>{{fish.genes}}</td>
+                    <td></td>
                     <td width="150">
-                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editGene"
-                                ng-click="editGene(gene)"><span
+                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#editFish"
+                                ng-click="editFish(fish)"><span
                                 class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#deleteGene"
-                                ng-click="removeGene(gene)">
+                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#deleteFish"
+                                ng-click="removeFish(fish)">
                             <span class="glyphicon glyphicon-trash"></span></button>
                         <button class="btn btn-success btn-xs" data-title="Details" data-toggle="modal"
                                 data-target="#details">
@@ -63,10 +63,85 @@
                           placeholder="Last name"></textarea>
                 </div>
                 <div class="form-group">
+                    <h4>First sex chromosome</h4>
+                    <label class="radio-inline"><input type="radio" name="optradio">Gene 1</label>
+                </div>
+                <div class="form-group">
+                    <h4>Second sex chromosome</h4>
+                    <label class="radio-inline"><input type="radio" name="optradio">Gene 1</label>
+                </div>
+                <div class="form-group">
+                    <h4>Autosomals</h4>
+                    <label class="checkbox-inline"><input type="checkbox" value="">Gene 1</label>
+                </div>
+                <div class="form-group">
                     <button class="btn btn-success" ng-click="addFish(aquarium)">Add new fish</button>
                 </div>
             </fieldset>
         </form>
+    </div>
+    <div id="deleteFish" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete fish</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset>
+                            <p>Warning! You are going to permanently remove this fish</p>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button class="btn btn-danger" ng-click="deleteFish()" data-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="editFish" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit fish</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <input type="text" ng-model="fishEdit.firstName" class="form-control"
+                                       placeholder="fish name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" ng-model="fishEdit.lastName" class="form-control"
+                                       placeholder="fish description">
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="typeGene">Select gene (select one):</label>-->
+                                <!--<select name="repeatSelect" class="form-control" id="typeofGene" ng-model="geneEdit.geneTypes">-->
+                                    <!--<option value="Ylinked">Y-linked</option>-->
+                                    <!--<option value="Xlinked">X-linked</option>-->
+                                    <!--<option value="Autosomal">Autosomal</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button class="btn btn-danger" ng-click="updateFish()" data-dismiss="modal">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

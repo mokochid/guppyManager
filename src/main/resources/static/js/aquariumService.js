@@ -42,6 +42,12 @@ angular.module('guppyMenagerApp')
           },
       updateGene: function (gene) {
             return $http({method: 'PUT', url: gene._links.self.href, data: gene});
-          }
+          },
+      updateFish: function (fish) {
+            return $http({method: 'PUT', url: fish._links.self.href, data: fish});
+      },
+      deleteFish: function (fish) {
+            return $http({method: 'DELETE', url: fish._links.self.href});
+       }
     };
   });
