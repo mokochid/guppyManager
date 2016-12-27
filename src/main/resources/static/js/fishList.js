@@ -25,7 +25,7 @@ toastr.options = {
     success(function (data) {
       console.log(data);
       aquarium.fishes = data._embedded.fishes;
-      aquarium.fishes.genes = data._embedded.fishes.genes.href;
+//      aquarium.fishes.genes = data._embedded.fishes.genes.href;
       $scope.aquarium = aquarium;
       console.log(aquarium.fishes);
     }).error(function (data) {
@@ -38,14 +38,14 @@ toastr.options = {
   $scope.newFishData = {
     "firstName": "",
     "lastName": "",
-    "fishTank": null
+    "fishTank": null,
+    "genes": []
     };
 
   $scope.addFish = function (aquarium) {
       $scope.newFishData.fishTank = aquarium._links.self.href;
       aquariumData.createFishInAquarium($scope.newFishData).
         success(function (data) {
-          $scope.getFishList();
           toastr.success("new fish added");
           getFishList(aquarium);
           $scope.newFishData.firstName = "";
@@ -57,4 +57,26 @@ toastr.options = {
     });
 //    getAquariumList();
     };
+    $scope.editFish = function (fish) {
+        $scope.fishEdit = angular.copy(fish);
+      };
+       $scope.updateFish = function () {
+          console.log($scope.fishEdit);
+//          $scope.fishEdit.genes.push($scope.fishEdit.gene);
+          aquariumData.updateFish($scope.fishEdit).
+          success(function(data){
+            console.log(data);
+          });
+        };
+      $scope.removeFish = function (fish) {
+            $scope.fishDelete = fish;
+          };
+
+      $scope.deleteFish = function () {
+        aquariumData.deleteFish($scope.fishDelete).
+        success(function(data) {
+            $scope.getFishes();
+        });
+      };
+
 });
