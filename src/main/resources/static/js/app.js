@@ -98,9 +98,13 @@ angular
                                 $rootScope.user.data = data;
                                 //$http.defaults.withCredentials = true;
                                 //$http.defaults.headers.common["Authorization"] = "Basic " + btoa(login + ":" + password);
-                                $location.path('/aquariumlist');
+                                userData.getFishBirth(login).success(function (data) {
+                                    $rootScope.user.birthFishes = data;
+                                    $location.path('/aquariumlist');
+                                }
+                                )
                                 toastr.success('Login success')
-                                //todo:daniel ladna obsluga bledow nie przez alerty tylko przez angularowe monity alert("findbylogin success");
+
                               }).error(function () {
                                 toastr.error("Nie znaleziono użytkownika");
                               });

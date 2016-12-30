@@ -6,6 +6,7 @@
 angular.module('guppyMenagerApp')
 .factory('userData', function ($http) {
   var backendURL = 'http://localhost:8080/api/users/';
+  var fishBirthURL = 'http://localhost:8080/api/fishBirths';
   return {
     getData: function (dataUrl) {
       return $http({method: 'GET', url: dataUrl});
@@ -33,6 +34,10 @@ angular.module('guppyMenagerApp')
     },
     addNewAquarium: function (url, data) {
         return $http({method: 'POST', url: url, data: data});
+    },
+    getFishBirth: function (user){
+        return $http({method: 'GET', url: fishBirthURL, params: {user:user}});
     }
+
   };
 });

@@ -14,10 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Fish {
@@ -28,6 +25,7 @@ public class Fish {
 
     private String firstName;
     private String lastName;
+    private Date fishBirth;
 
     @ManyToOne
     private Aquarium fishTank;
@@ -64,5 +62,13 @@ public class Fish {
     }
     public void setFishTank(Aquarium fishTank) {
         this.fishTank = fishTank;
+    }
+
+    public Date getFishBirth() {
+        return fishBirth;
+    }
+
+    public void setFishBirth(Date fishBirth) {
+        this.fishBirth = fishBirth;
     }
 }

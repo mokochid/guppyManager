@@ -13,6 +13,7 @@ toastr.options = {
   "timeOut": 5000,
   "extendedTimeOut": 1000
 };
+  $scope.fishBirth = $rootScope.user.birthFishes;
 
   var getAquariumList = function () {
       userData.getDataByURL($rootScope.user.data._links.aquariums.href).
