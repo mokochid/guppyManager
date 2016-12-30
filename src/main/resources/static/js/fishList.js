@@ -65,6 +65,7 @@ toastr.options = {
 //          $scope.fishEdit.genes.push($scope.fishEdit.gene);
           aquariumData.updateFish($scope.fishEdit).
           success(function(data){
+            getFishList($scope.aquarium);
             console.log(data);
           });
         };
@@ -75,6 +76,7 @@ toastr.options = {
       $scope.deleteFish = function () {
         aquariumData.deleteFish($scope.fishDelete).
         success(function(data) {
+            getFishList($scope.aquarium);
             $scope.getFishes();
         });
       };
